@@ -16,16 +16,17 @@ function generatePassword(){
   var choices = "";
   var answer;
 
-  
   var userChoice = window.prompt("How long is your password?");
   console.log(userChoice);
   if (!userChoice) {
-    return "";
+    alert("This needs a value");
+  } else if (userChoice < 8 || userChoice > 128) {
+    //validates user input
+    userChoice = parseInt(prompt("You must choose between 8 and 128"));
+  } else {
+  var confirmLowerCase = window.confirm ("Do you want to include lowercase?");
   }
 
-
-  var confirmLowerCase = window.confirm ("Do you want to include lowercase?");
-  
   if(confirmLowerCase) {
     choices += "abcdefghijklmnopqrstuvwxyz";
   } 
@@ -63,6 +64,7 @@ function generatePassword(){
 return addToAnswer;
 
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
